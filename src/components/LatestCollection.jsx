@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { ShopContext } from "../context/ShopContext"
 import Title from "./Title";
 
@@ -8,6 +8,10 @@ const LatestCollection = () => {
   const { products } = useContext(ShopContext);
 
   const [latestProducts, setLatestProducts] = useState([]);
+
+  useEffect(() => {
+    setLatestProducts(products.slice(0,10));
+  }, [])
   
 
   return (
@@ -18,8 +22,6 @@ const LatestCollection = () => {
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the.
         </p>
       </div>
-
-
     </div>
   )
 }
